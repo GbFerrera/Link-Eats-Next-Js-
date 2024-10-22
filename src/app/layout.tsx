@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import {Inter} from "next/font/google"
 import { AppSidebar } from "@/components/app-sidebar"
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets: ["latin"]})
 
 export const metadata: Metadata = {
   title: "Link-Eats",
@@ -14,15 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="us">
+    <html lang="en">
       <body
+      className={cn(" min-h-screen bg-background font-sans antialiased",inter.className)}
       >
-        <SidebarProvider>
-        <main>
-
+      
+      <AppSidebar />
+      <main>
         {children}
-</main>
-        </SidebarProvider>
+      </main>
+   
       </body>
     </html>
   );
