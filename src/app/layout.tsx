@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {Inter} from "next/font/google"
-import { AppSidebar } from "@/components/app-sidebar"
+import { Inter } from "next/font/google";
+import { AppSidebar } from "@/components/app-sidebar";
 import { cn } from "@/lib/utils";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
-const inter = Inter({subsets: ["latin"]})
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Link-Eats",
@@ -13,20 +14,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-      className={cn(" min-h-screen bg-background font-sans antialiased",inter.className)}
+        className={cn("min-h-screen bg-background font-sans antialiased", inter.className)}
       >
-      
-      <AppSidebar />
-      <main>
-        {children}
-      </main>
-   
+        
+            <AppSidebar>{children}</AppSidebar>
+          
+          {children}
+        
+        
       </body>
     </html>
   );

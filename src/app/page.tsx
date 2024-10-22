@@ -1,8 +1,8 @@
 
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Page() {
   return (
 
-   <h1>teste</h1>
+   <h1>teste bb lindo</h1>
   )
 }
