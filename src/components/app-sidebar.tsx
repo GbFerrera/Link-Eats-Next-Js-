@@ -23,9 +23,13 @@ import {
   Settings2,
   Sparkles,
   SquareTerminal,
+  ChartPie,
   Trash2,
-  Home,
-  ChartNoAxesCombinedIcon
+  DollarSign,
+  Grid2x2CheckIcon,
+  ClipboardList,
+  ChefHat,
+  Users
 } from "lucide-react"
 
 import {
@@ -85,9 +89,9 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Link-Eats",
       logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      plan: "Customizado",
     },
     {
       name: "Acme Corp.",
@@ -104,16 +108,16 @@ const data = {
     {
       title: "Dashboard",
       url: "/",
-      icon: ChartNoAxesCombinedIcon,
+      icon: ChartPie,
       isActive: true,
     },
     {
-      title: "Models",
+      title: "Financeiro",
       url: "#",
-      icon: Bot,
+      icon: DollarSign,
       items: [
         {
-          title: "Genesis",
+          title: "Pedidos pendentes",
           url: "#",
         },
         {
@@ -127,9 +131,9 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Pedidos",
       url: "#",
-      icon: BookOpen,
+      icon: ClipboardList,
       items: [
         {
           title: "Introduction",
@@ -150,7 +154,76 @@ const data = {
       ],
     },
     {
-      title: "Settings",
+      title: "Mesas",
+      url: "#",
+      icon: Grid2x2CheckIcon,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Produtos",
+      url: "#",
+      icon: ChefHat,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Usúarios",
+      url: "#",
+      icon: Users,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Configurações",
       url: "#",
       icon: Settings2,
       items: [
@@ -172,6 +245,7 @@ const data = {
         },
       ],
     },
+   
   ],
   projects: [
     {
@@ -277,7 +351,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
 
           <SidebarGroup>
             <SidebarGroupLabel>Plataforma</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenu className="gap-3 mt-4">
               {data.navMain.map((item) => (
                 <Collapsible
                   key={item.title}
@@ -287,8 +361,10 @@ export function AppSidebar({ children }: AppSidebarProps) {
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton tooltip={item.title}>
-                        {item.icon && <item.icon/>}
+                      <SidebarMenuButton className="text-sm rounded-xl p-3 border border-gray-30 hover:scale-110 hover:shadow-lg hover:translate-x-1 transition duration-300" tooltip={item.title}>
+                      <a href="/">
+                      {item.icon && <item.icon className="size-4"/>}
+                    </a>
                         <span>{item.title}</span>
                         <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                       </SidebarMenuButton>
