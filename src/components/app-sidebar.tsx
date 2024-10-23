@@ -113,7 +113,7 @@ const data = {
     },
     {
       title: "Financeiro",
-      url: "#",
+      url: "financial",
       icon: DollarSign,
       items: [
         {
@@ -132,7 +132,7 @@ const data = {
     },
     {
       title: "Pedidos",
-      url: "#",
+      url: "orders",
       icon: ClipboardList,
       items: [
         {
@@ -155,7 +155,7 @@ const data = {
     },
     {
       title: "Mesas",
-      url: "#",
+      url: "tables",
       icon: Grid2x2CheckIcon,
       items: [
         {
@@ -178,7 +178,7 @@ const data = {
     },
     {
       title: "Produtos",
-      url: "#",
+      url: "products",
       icon: ChefHat,
       items: [
         {
@@ -201,7 +201,7 @@ const data = {
     },
     {
       title: "Usúarios",
-      url: "#",
+      url: "users",
       icon: Users,
       items: [
         {
@@ -224,7 +224,7 @@ const data = {
     },
     {
       title: "Configurações",
-      url: "#",
+      url: "config",
       icon: Settings2,
       items: [
         {
@@ -274,7 +274,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
   const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <Sidebar collapsible="icon">
         <SidebarHeader>
           <SidebarMenu>
@@ -362,7 +362,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton className="text-sm rounded-xl p-3 border border-gray-30 hover:scale-110 hover:shadow-lg hover:translate-x-1 transition duration-300" tooltip={item.title}>
-                      <a href="/">
+                      <a href={item.url}>
                       {item.icon && <item.icon className="size-4"/>}
                     </a>
                         <span>{item.title}</span>
@@ -402,7 +402,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
                   </SidebarMenuButton>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <SidebarMenuAction showOnHover>
+                      <SidebarMenuAction  >
                         <MoreHorizontal />
                         <span className="sr-only">More</span>
                       </SidebarMenuAction>
