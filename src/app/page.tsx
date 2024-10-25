@@ -26,6 +26,7 @@ import {
 
 import { ComponentBarChart } from "@/components/bar-chat";
 import { CarouselOrientation } from "@/components/carousel";
+import { Title } from "@/components/title";
 
 export default function Dashboard({
   className,
@@ -38,7 +39,7 @@ export default function Dashboard({
   return (
     <div className="grid gap-4 sm:gap-9">
       <div className="flex flex-col lg:justify-between lg:flex-row mb-10">
-        <h1 className="font-bold text-2xl sm:text-3xl">Dashboard</h1>
+        <Title>Dashboard</Title>
         <Popover>
           <PopoverTrigger className="rounded-xl" asChild>
             <Button

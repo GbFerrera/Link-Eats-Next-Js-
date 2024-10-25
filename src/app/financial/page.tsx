@@ -9,6 +9,7 @@ import {
 
 
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/title"
 
 import { HandCoins, Edit, CirclePlus } from "lucide-react";
 
@@ -22,7 +23,7 @@ import {
 export default function FinancialPage() {
   return (
     <div>
-    <h1 className="font-bold text-2xl sm:text-3xl">Financeiro</h1>
+    <Title>Financeiro</Title>
     <p className="mb-10">Visão geral do setor financeiro</p>
   
     <div id="cards" className="flex gap-7 flex-col lg:justify-between lg:flex-row">

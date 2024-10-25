@@ -1,15 +1,24 @@
+import { Title } from "@/components/title"
+
 
 
 export default function OrdersPage(){
 
 return(
 
+<div>
 
 
-<h1 
-className=""
->Orders</h1>
+<Title>Pedidos</Title>
 
+
+
+
+
+
+
+
+</div>
 
 
 
