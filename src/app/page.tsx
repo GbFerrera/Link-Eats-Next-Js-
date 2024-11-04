@@ -2,7 +2,14 @@
 
 import * as React from "react";
 import { addDays, format } from "date-fns";
-import { Calendar as CalendarIcon, Receipt } from "lucide-react";
+import {
+   Calendar as CalendarIcon,
+    Receipt,
+    DollarSign,
+    TrendingUp,
+    CreditCard,
+    ShoppingCart
+  } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
@@ -36,8 +43,13 @@ export default function Dashboard() {
 
   return (
     <div className="grid gap-4 sm:gap-9">
-      <div className="flex flex-col lg:justify-between lg:flex-row mb-10">
+      <div className="flex flex-col lg:justify-between lg:flex-row mb-5">
+
+
+        <div>
         <Title>Dashboard</Title>
+        <p>Visão geral do négocio</p>
+       </div>
         <Popover>
           <PopoverTrigger className="rounded-xl" asChild>
             <Button
@@ -87,11 +99,11 @@ export default function Dashboard() {
               <div className="flex justify-between" >
               Receita total
               
-              <Receipt/>
+              <DollarSign/>
 
               </div>
               </CardTitle>
-            <CardDescription>Dos últimos 30 dias</CardDescription>
+            <CardDescription>Total bruto</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="font-bold">R$ 100,00</p>
@@ -100,7 +112,25 @@ export default function Dashboard() {
         </Card>
 
 
-    
+        <Card>
+          <CardHeader>
+            <CardTitle>
+              
+              <div className="flex justify-between" >
+              Lucro Líquido
+              
+              <TrendingUp/>
+
+              </div>
+              </CardTitle>
+            <CardDescription>valor de Receita Total menos Despesas</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="font-bold">R$ 100,00</p>
+          </CardContent>
+         
+        </Card>
+
 
  
         <Card>
@@ -108,13 +138,13 @@ export default function Dashboard() {
             <CardTitle>
               
               <div className="flex justify-between" >
-              Receita total
+              Despesas
               
-              <Receipt/>
+              <CreditCard/>
 
               </div>
               </CardTitle>
-            <CardDescription>Dos últimos 30 dias</CardDescription>
+            <CardDescription>Total de despesas</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="font-bold">R$ 100,00</p>
@@ -131,16 +161,16 @@ export default function Dashboard() {
             <CardTitle>
               
               <div className="flex justify-between" >
-              Receita total
+              Pedidos
               
-              <Receipt/>
+              <ShoppingCart/>
 
               </div>
               </CardTitle>
-            <CardDescription>Dos últimos 30 dias</CardDescription>
+            <CardDescription>vendas ou pedidos realizados</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="font-bold">R$ 100,00</p>
+            <p className="font-bold">1000</p>
           </CardContent>
         </Card>
 
@@ -150,25 +180,7 @@ export default function Dashboard() {
 
 
    
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              
-              <div className="flex justify-between" >
-              Receita total
-              
-              <Receipt/>
-
-              </div>
-              </CardTitle>
-            <CardDescription>Dos últimos 30 dias</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="font-bold">R$ 100,00</p>
-          </CardContent>
-         
-        </Card>
-
+       
 
   
 
