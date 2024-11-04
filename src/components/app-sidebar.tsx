@@ -569,7 +569,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
                 
                 </div>
               </header>
-              <main className="overflow-y-auto p-6 bg-gray-50">
+              <main className="overflow-y-auto p-6 ">
 
                 {children}
            

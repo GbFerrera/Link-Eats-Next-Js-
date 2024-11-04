@@ -28,9 +28,7 @@ import { ComponentBarChart } from "@/components/bar-chat";
 import { CarouselOrientation } from "@/components/carousel";
 import { Title } from "@/components/title";
 
-export default function Dashboard({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) {
+export default function Dashboard() {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(2024, 0, 20),
     to: addDays(new Date(2024, 0, 20), 20),
