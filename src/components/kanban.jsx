@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Clock, Loader, CheckCircle } from 'lucide-react'; // Importando os ícones do Lucide
 
 // Exemplo de dados de pedidos
 const initialOrders = {
@@ -82,7 +83,7 @@ export function Kanban() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex justify-between">
+      <div className="  md:flex justify-between  "style={{ width: '70%' }}>
         {Object.keys(orders).map((status) => (
           <Droppable key={status} droppableId={status} direction="vertical">
             {(provided) => (
@@ -91,9 +92,14 @@ export function Kanban() {
                 {...provided.droppableProps}
                 className={`p-4 w-72 rounded-lg m-2 border ${getColumnStyles(status)}`}
               >
-                <h3 className="font-semibold text-lg mb-2">
-                  {status.charAt(0).toUpperCase() + status.slice(1)}
-                </h3>
+                <div className="flex items-center mb-2 ">
+                  {status === 'pending' && <Clock className="mr-2 text-red-600" />}
+                  {status === 'preparing' && <Loader className="mr-2 text-yellow-600" />}
+                  {status === 'shipped' && <CheckCircle className="mr-2 text-green-600" />}
+                  <h3 className="font-semibold text-lg">
+                    {status.charAt(0).toUpperCase() + status.slice(1)} ({orders[status].length}) 
+                  </h3>
+                </div>
                 {orders[status].map((order, index) => (
                   <Draggable key={order.id} draggableId={order.id} index={index}>
                     {(provided) => (
