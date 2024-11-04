@@ -20,6 +20,15 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
 export default function FinancialPage() {
   return (
     <div>
@@ -52,11 +61,23 @@ export default function FinancialPage() {
         <div className="flex justify-between mb-12 ">
         <h2 className="text-lg font-semibold ">Principais Despesas</h2>
 
-          <Button className="rounded-full">
-          <CirclePlus/>
+        <Sheet>
+  <SheetTrigger className="mb-5">
 
-             Nova Despesa
-          </Button>
+    <Button>
+      Criar novo pedido
+      <CirclePlus/>
+      </Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Detalhes da nova despesa</SheetTitle>
+      <SheetDescription>
+        
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
         
         
         </div>
