@@ -18,31 +18,7 @@ const initialOrders = {
   ],
 };
 
-const getColumnStyles = (status) => {
-  switch (status) {
-    case 'pending':
-      return 'bg-red-100 border-red-200';
-    case 'preparing':
-      return 'bg-yellow-100 border-yellow-200';
-    case 'shipped':
-      return 'bg-green-100 border-green-200';
-    default:
-      return '';
-  }
-};
 
-const getOrderStyles = (status) => {
-  switch (status) {
-    case 'pending':
-      return 'bg-red-500 text-white';
-    case 'preparing':
-      return 'bg-yellow-500 text-white';
-    case 'shipped':
-      return 'bg-green-500 text-white';
-    default:
-      return '';
-  }
-};
 
 export function Kanban() {
   const [orders, setOrders] = useState(initialOrders);
@@ -83,16 +59,16 @@ export function Kanban() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="  md:flex justify-between  "style={{ width: '70%' }}>
+      <div className="w-full md:flex justify-between  ">
         {Object.keys(orders).map((status) => (
           <Droppable key={status} droppableId={status} direction="vertical">
             {(provided) => (
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                className={`p-4 w-72 rounded-lg m-2 border ${getColumnStyles(status)}`}
+                className={`p-4 rounded-lg m-2 border w-full`}
               >
-                <div className="flex items-center mb-2 ">
+                <div className="flex items-center mb-2">
                   {status === 'pending' && <Clock className="mr-2 text-red-600" />}
                   {status === 'preparing' && <Loader className="mr-2 text-yellow-600" />}
                   {status === 'shipped' && <CheckCircle className="mr-2 text-green-600" />}
@@ -107,7 +83,7 @@ export function Kanban() {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className={`p-4 mb-2 rounded-lg shadow-md ${getOrderStyles(status)}`}
+                        className={`p-4 mb-2 rounded-lg shadow-md`}
                       >
                         {order.content}
                       </div>
