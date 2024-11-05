@@ -29,6 +29,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
+
+import { LineChartComponent } from "@/components/line-chart";
+
 export default function FinancialPage() {
   return (
     <div>
@@ -65,7 +68,7 @@ export default function FinancialPage() {
   <SheetTrigger className="mb-5">
 
     <Button>
-      Criar novo pedido
+      Criar nova despesa
       <CirclePlus/>
       </Button>
   </SheetTrigger>
@@ -197,6 +200,27 @@ export default function FinancialPage() {
           {/* Adicione mais cards conforme necessário */}
         </div>
       </div>
+    </div>
+
+
+<div className="mt-10 flex flex-col gap-7 lg:flex-row">
+
+    <LineChartComponent/>
+
+
+
+    <div>
+
+      <p className="text-xl font-bold">Histórico de Pagamentos</p>
+
+      
+
+
+
+
+    </div>
+    
+    
     </div>
   </div>
   
