@@ -123,7 +123,7 @@ export default function Dashboard() {
 
               </div>
               </CardTitle>
-            <CardDescription>valor de Receita Total menos Despesas</CardDescription>
+            <CardDescription>Total menos Despesas</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="font-bold">R$ 100,00</p>
@@ -198,7 +198,7 @@ export default function Dashboard() {
 
         <div className="flex-1">
 
-        <h2 className="mb-5 font-bold text-xl w-full">Top produtos mais vendidos</h2>
+        <h2 className="mb-5 font-bold text-2xl w-full">Top produtos mais vendidos</h2>
 
         <CarouselOrientation/>
         
