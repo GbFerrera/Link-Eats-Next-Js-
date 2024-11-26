@@ -48,8 +48,8 @@ export function CarouselOrientation() {
                 <CardContent className="flex gap-6 p-6 h-40 w-full overflow-hidden">
                   <div>
                     <img
-                      className="h-[80px] w-[80px] rounded-md mb-3"
-                      src="https://api.linkeats.app/files/8fd69005f1a5d6eaa2b7-IMG_0598.JPG"
+                      className="h-[80px] w-[80px] rounded-md mb-3 object-cover"
+                      src="https://res.cloudinary.com/ddl9w1a1n/image/upload/v1731868843/avatars/product_38.jpg"
                       alt=""
                     />
                     <p className="text-xl flex gap-2 text-center font-bold">
