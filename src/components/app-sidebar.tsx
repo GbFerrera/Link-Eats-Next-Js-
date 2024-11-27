@@ -32,6 +32,9 @@ import {
   Users
 } from "lucide-react"
 
+import { FaWhatsapp } from "react-icons/fa";
+import { MdOutlineTableBar } from "react-icons/md";
+
 import {ModeToggle } from "@/components/mode-toggle"
 
 import {
@@ -114,6 +117,21 @@ const data = {
       isActive: true,
     },
     {
+      title: "Atendimentos",
+      url: "/service",
+      icon: FaWhatsapp,
+      items: [
+        {
+          title: "Configurações",
+          url: "#",
+        },
+        {
+          title: "Campanhas",
+          url: "#",
+        }
+      ],
+    },
+    {
       title: "Financeiro",
       url: "financial",
       icon: DollarSign,
@@ -158,7 +176,7 @@ const data = {
     {
       title: "Mesas",
       url: "tables",
-      icon: Grid2x2CheckIcon,
+      icon: MdOutlineTableBar,
       items: [
         {
           title: "General",
@@ -363,7 +381,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton className="text-sm rounded-xl p-3 border border-gray-30 hover:scale-110 hover:shadow-lg hover:translate-x-1 transition duration-300" tooltip={item.title}>
+                      <SidebarMenuButton className="text-sm rounded-xl p-3 border border-gray-30 hover:shadow-lg hover:translate-x-1 transition duration-300" tooltip={item.title}>
                       <a href={item.url}>
                       {item.icon && <item.icon className="size-4"/>}
                     </a>
