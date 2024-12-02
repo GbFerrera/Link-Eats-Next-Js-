@@ -4,7 +4,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import  DataTable  from "@/components/dataTable";
+import  {DataTableComponent}  from "@/components/dataTable";
 
 import { Users,UserCog,ShoppingBag,Utensils } from "lucide-react";
 
@@ -104,7 +104,7 @@ return(
 </div>
 
 
-<DataTable/>
+<DataTableComponent/>
 
 </>
 

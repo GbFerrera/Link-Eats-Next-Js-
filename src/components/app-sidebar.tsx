@@ -123,11 +123,11 @@ const data = {
       items: [
         {
           title: "Configurações",
-          url: "#",
+          url: "/service/config",
         },
         {
           title: "Campanhas",
-          url: "#",
+          url: "/service/campaign",
         }
       ],
     },
@@ -179,8 +179,8 @@ const data = {
       icon: MdOutlineTableBar,
       items: [
         {
-          title: "General",
-          url: "#",
+          title: "Gerais",
+          url: "/config",
         },
         {
           title: "Team",
@@ -248,19 +248,19 @@ const data = {
       icon: Settings2,
       items: [
         {
-          title: "General",
+          title: "Gerais",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Pagamentos",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Impressão",
           url: "#",
         },
         {
-          title: "Limits",
+          title: "Horários",
           url: "#",
         },
       ],
