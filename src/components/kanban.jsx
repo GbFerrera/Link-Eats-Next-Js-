@@ -9,6 +9,7 @@ const initialOrders = {
   pending: [
     { id: '1', content: 'Pedido 1' },
     { id: '2', content: 'Pedido 2' },
+    { id: '5', content: 'Pedido 5' },
   ],
   preparing: [
     { id: '3', content: 'Pedido 3' },

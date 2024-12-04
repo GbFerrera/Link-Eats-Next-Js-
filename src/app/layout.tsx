@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { AppSidebar } from "@/components/app-sidebar";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider"
+import { CommandDialogDemo } from "@/components/command-dialog";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +25,7 @@ export default function RootLayout({
         className={cn("min-h-screen bg-background font-sans antialiased", inter.className)}
       >
 
+
 <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -31,6 +34,7 @@ export default function RootLayout({
           >
         
             <AppSidebar>{children}</AppSidebar>
+            <CommandDialogDemo/>
 
             </ThemeProvider>
         

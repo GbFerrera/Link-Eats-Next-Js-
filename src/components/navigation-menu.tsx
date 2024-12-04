@@ -24,13 +24,6 @@ export function NavigationMenuComponent() {
       </NavigationMenuContent>
     </NavigationMenuItem>
 
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Pagamentos</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink>Link</NavigationMenuLink>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-
 
     <NavigationMenuItem>
       <NavigationMenuTrigger>Impressão</NavigationMenuTrigger>

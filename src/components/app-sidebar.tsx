@@ -29,7 +29,8 @@ import {
   Grid2x2CheckIcon,
   ClipboardList,
   ChefHat,
-  Users
+  Users,
+  CodeXml
 } from "lucide-react"
 
 import { FaWhatsapp } from "react-icons/fa";
@@ -115,6 +116,12 @@ const data = {
       url: "/",
       icon: ChartPie,
       isActive: true,
+      items: [
+        {
+          title: "Visão geral",
+          url: "/",
+        },
+      ],
     },
     {
       title: "Atendimentos",
@@ -133,126 +140,133 @@ const data = {
     },
     {
       title: "Financeiro",
-      url: "financial",
+      url: "/financial",
       icon: DollarSign,
       items: [
         {
-          title: "Pedidos pendentes",
-          url: "#",
+          title: "Pagamentos",
+          url: "/financial/payments",
         },
         {
-          title: "Explorer",
-          url: "#",
+          title: "Contabilidade",
+          url: "/financial/accounting",
         },
         {
-          title: "Quantum",
-          url: "#",
+          title: "Relatórios",
+          url: "/financial/reports",
+        },
+        {
+          title: "Despesas",
+          url: "/financial/expenses",
         },
       ],
     },
     {
       title: "Pedidos",
-      url: "orders",
+      url: "/orders",
       icon: ClipboardList,
       items: [
         {
-          title: "Introduction",
+          title: "Cupons e Promoções",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "Controle de Entregas",
           url: "#",
         },
         {
-          title: "Tutorials",
+          title: "Rejeitados e Cancelados",
           url: "#",
         },
         {
-          title: "Changelog",
+          title: "Abandono de carrinho",
           url: "#",
         },
       ],
     },
     {
       title: "Mesas",
-      url: "tables",
+      url: "/tables",
       icon: MdOutlineTableBar,
       items: [
         {
-          title: "Gerais",
+          title: "Reservas",
           url: "/config",
         },
         {
-          title: "Team",
+          title: "Comandas",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Histórico",
           url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
+        }
       ],
     },
     {
       title: "Produtos",
-      url: "products",
+      url: "/products",
       icon: ChefHat,
       items: [
         {
-          title: "General",
+          title: "Histórico de Vendas",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Margem de Lucro",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Categorias",
           url: "#",
         },
         {
-          title: "Limits",
+          title: "Estoque",
           url: "#",
         },
       ],
     },
     {
       title: "Usúarios",
-      url: "users",
+      url: "/users",
       icon: Users,
       items: [
         {
-          title: "General",
+          title: "Recuperação de Senha",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Horários e Escala",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Relatórios",
           url: "#",
         },
         {
-          title: "Limits",
+          title: "Pagamentos",
           url: "#",
         },
       ],
     },
     {
-      title: "Configurações",
-      url: "config",
-      icon: Settings2,
+      title: "Integrações",
+      url: "/integrations",
+      icon: CodeXml,
       items: [
         {
           title: "Gerais",
           url: "#",
-        },
+        }
+      ],
+    },
+    {
+      title: "Configurações",
+      url: "/config",
+      icon: Settings2,
+      items: [
         {
-          title: "Pagamentos",
+          title: "Gerais",
           url: "#",
         },
         {
