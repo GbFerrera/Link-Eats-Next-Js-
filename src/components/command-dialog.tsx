@@ -38,10 +38,10 @@ export function CommandDialogDemo() {
 
   return (
     <>
-      <p className="absolute hidden xl:block bottom-10 right-10 p-6 text-sm text-muted-foreground">
-        Press{" "}
+      <p className="fixed hidden xl:block bottom-0 right-0 p-6 text-sm text-muted-foreground">
+        Precione{" "}
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
-          <span className="text-xs">⌘</span>J
+          <span className="text-xs">⌘ ou CTRL</span>J
         </kbd>
       </p>
       <CommandDialog open={open} onOpenChange={setOpen}>
