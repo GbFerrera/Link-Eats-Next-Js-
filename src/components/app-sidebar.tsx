@@ -35,6 +35,8 @@ import {
 
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineTableBar } from "react-icons/md";
+import { IoFastFoodOutline } from "react-icons/io5";
+
 
 import {ModeToggle } from "@/components/mode-toggle"
 
@@ -206,7 +208,7 @@ const data = {
     {
       title: "Produtos",
       url: "/products",
-      icon: ChefHat,
+      icon: IoFastFoodOutline,
       items: [
         {
           title: "Histórico de Vendas",
@@ -300,12 +302,15 @@ const data = {
   ],
 }
 
+import { useAuth } from "@/hooks/auth";
+
 interface AppSidebarProps {
   children: React.ReactNode; 
 }
 
 export function AppSidebar({ children }: AppSidebarProps) {
   const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
+  const { signOut } = useAuth();
 
   return (
     <SidebarProvider defaultOpen={false}>
@@ -555,9 +560,9 @@ export function AppSidebar({ children }: AppSidebarProps) {
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer" onClick={()=> signOut()}> 
                     <LogOut />
-                    Log out
+                    Sair
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -601,7 +606,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
                 
                 </div>
               </header>
-              <main className="overflow-y-auto p-6 ">
+              <main className="p-6 ">
 
                 {children}
            
