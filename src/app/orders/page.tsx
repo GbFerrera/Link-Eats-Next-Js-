@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 import { Title } from "@/components/title"
 
-import {Kanban} from "@/components/kanban"
+import {Kanban} from "./components/kanban"
 import { Clock, Loader, CheckCircle,CirclePlus } from 'lucide-react'; 
 import { Button } from "@/components/ui/button";
 

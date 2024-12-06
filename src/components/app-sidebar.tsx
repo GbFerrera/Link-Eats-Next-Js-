@@ -244,11 +244,7 @@ const data = {
         {
           title: "Relatórios",
           url: "#",
-        },
-        {
-          title: "Pagamentos",
-          url: "#",
-        },
+        }
       ],
     },
     {

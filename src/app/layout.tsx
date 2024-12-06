@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="title" content="Link-Eats" />
+      <title>Link-Eats</title>
       <meta name="description" content={metadata.description ?? "Default description"} />
 
       </head>
