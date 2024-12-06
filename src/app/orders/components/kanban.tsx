@@ -26,76 +26,81 @@ export function Kanban() {
   });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const user = JSON.parse(localStorage.getItem("@linkEats:user") || '{}');
+  const [user, setUser] = useState<any>(null); // Use state to set user
 
   useEffect(() => {
-    const loadOrders = async () => {
-      try {
-        const fetchedOrders = await fetchOrders(user.company_id);
-        const organizedOrders: OrdersState = {
-          pendente: fetchedOrders
-            .filter((order) => order.status === "pending")
-            .map((order) => ({
-              id: String(order.id),
-              content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
-              status: order.status,
-              client_name: order.client_name,
-              total_value: order.total_value,
-              table_number: order.table_number,
-            })),
-          preparando: fetchedOrders
-            .filter((order) => order.status === "preparing")
-            .map((order) => ({
-              id: String(order.id),
-              content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
-              status: order.status,
-              client_name: order.client_name,
-              total_value: order.total_value,
-              table_number: order.table_number,
-            })),
-          enviado: fetchedOrders
-            .filter((order) => order.status === "sent")
-            .map((order) => ({
-              id: String(order.id),
-              content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
-              status: order.status,
-              client_name: order.client_name,
-              total_value: order.total_value,
-              table_number: order.table_number,
-            })),
-        };
-        setOrders(organizedOrders);
-      } catch (err) {
-        setError("Erro ao carregar os pedidos. Tente novamente mais tarde.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadOrders();
+    const storedUser = localStorage.getItem("@linkEats:user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // Only set the user from localStorage after rendering on client
+    }
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      const loadOrders = async () => {
+        try {
+          const fetchedOrders = await fetchOrders(user.company_id);
+          const organizedOrders: OrdersState = {
+            pendente: fetchedOrders
+              .filter((order) => order.status === "pending")
+              .map((order) => ({
+                id: String(order.id),
+                content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
+                status: order.status,
+                client_name: order.client_name,
+                total_value: order.total_value,
+                table_number: order.table_number,
+              })),
+            preparando: fetchedOrders
+              .filter((order) => order.status === "preparing")
+              .map((order) => ({
+                id: String(order.id),
+                content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
+                status: order.status,
+                client_name: order.client_name,
+                total_value: order.total_value,
+                table_number: order.table_number,
+              })),
+            enviado: fetchedOrders
+              .filter((order) => order.status === "sent")
+              .map((order) => ({
+                id: String(order.id),
+                content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
+                status: order.status,
+                client_name: order.client_name,
+                total_value: order.total_value,
+                table_number: order.table_number,
+              })),
+          };
+          setOrders(organizedOrders);
+        } catch (err) {
+          setError("Erro ao carregar os pedidos. Tente novamente mais tarde.");
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      loadOrders();
+    }
+  }, [user]); // This effect will run when `user` is set
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source } = result;
 
-    if (!destination) return; // Se o item não foi solto em lugar nenhum, não faz nada
+    if (!destination) return;
 
-    // Verifique se o item foi movido de um lugar diferente
     if (destination.droppableId !== source.droppableId || destination.index !== source.index) {
-      const startColumn = [...orders[source.droppableId as keyof OrdersState]]; // Coluna de origem
-      const finishColumn = [...orders[destination.droppableId as keyof OrdersState]]; // Coluna de destino
+      const startColumn = [...orders[source.droppableId as keyof OrdersState]];
+      const finishColumn = [...orders[destination.droppableId as keyof OrdersState]];
 
-      const [movedOrder] = startColumn.splice(source.index, 1); // Remove o pedido da coluna de origem
-      finishColumn.splice(destination.index, 0, movedOrder); // Adiciona o pedido na nova posição na coluna de destino
+      const [movedOrder] = startColumn.splice(source.index, 1);
+      finishColumn.splice(destination.index, 0, movedOrder);
 
       setOrders((prevOrders) => ({
         ...prevOrders,
-        [source.droppableId]: startColumn, // Atualiza a coluna de origem
-        [destination.droppableId]: finishColumn, // Atualiza a coluna de destino
+        [source.droppableId]: startColumn,
+        [destination.droppableId]: finishColumn,
       }));
-
-      // Aqui você pode adicionar a lógica de atualização de status no servidor
-      // Se necessário, você pode chamar uma API para atualizar o status do pedido
     }
   };
 
