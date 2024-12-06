@@ -167,15 +167,26 @@ export function DataTable() {
   const [rowSelection, setRowSelection] = React.useState({})
   const [data, setData] = React.useState<Product[]>([])
 
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const products = await fetchProducts(1)
-      console.log(products)
-      setData(products)
-    }
 
-    fetchData()
-  }, [])
+  const [user, setUser] = React.useState<any>(null); // Use state to set user
+
+  React.useEffect(() => {
+    const storedUser = localStorage.getItem("@linkEats:user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  
+  React.useEffect(() => {
+    if (user && user.company_id) {
+      const fetchData = async () => {
+        const products = await fetchProducts(user.company_id);
+        setData(products);
+      };
+  
+      fetchData();
+    }
+  }, [user]);
 
   const table = useReactTable({
     data,
