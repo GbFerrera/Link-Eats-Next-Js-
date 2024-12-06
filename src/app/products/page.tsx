@@ -1,32 +1,19 @@
-import { Title } from "@/components/title"
-import {Input} from "@/components/ui/input"
+import { Title } from "@/components/title";
+import { DataTable } from "./components/dataTable";
+import { NewProduct } from "./components/newProduct";
 
-export default function ProductsPage(){
+export default function ProductsPage() {
+  return (
+    <div>
+      <div className="flex justify-between">
+        <div>
+          <Title>Produtos</Title>
+          <p>Visão geral dos produtos</p>
+        </div>
 
-return(
-
-
-  <div>
-
-<Title>Produtos</Title>
-
-
-<Input
-placeholder="Busque pelo nome do produto"
-
-/>
-
-
-
-
-</div>
-
-
-
-)
-
-
-
-
-
+        <NewProduct />
+      </div>
+      <DataTable />
+    </div>
+  );
 }
