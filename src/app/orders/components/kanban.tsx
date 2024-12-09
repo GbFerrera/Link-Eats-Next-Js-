@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { Clock, Loader, CheckCircle } from "lucide-react";
-import { fetchOrders } from "@/app/api/fetchOrders"; 
+import { fetchOrders } from "@/app/api/orders/fetchOrders"; 
 
 interface Order {
   id: string;
