@@ -24,14 +24,11 @@ import { Star, Store } from "lucide-react";
 
 export default function TablesPage() {
   return (
-    <div className="w-full">
+    <div className="">
       <Title>Mesas</Title>
+      <h2 className="mb-5">Lista de mesas</h2>
 
-      <section className=" lg:flex gap-10">
-        <div className="">
-          <h2 className="mb-5">Lista de mesas</h2>
-
-          <Select>
+      <Select>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Mesas" />
             </SelectTrigger>
@@ -42,62 +39,66 @@ export default function TablesPage() {
             </SelectContent>
           </Select>
 
-          <div className="mt-5">
-            <div className="flex lg:grid grid-cols-2 gap-5">
-              <Button className="flex flex-col items-center justify-center w-30 h-30 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg ">
-                <span className="font-bold">01</span>
-                <span className="text-xs mt-1">7 min</span>
-              </Button>
+      <section className="flex flex-col mt-5 gap-8">
+ 
+         
+      <div className="flex w-[300px] overflow-auto md:grid md:w-full md:grid-cols-2 gap-4 md:h-[300px] ">
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">01</span>
+    <span className="text-xs mt-1">7 min</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">02</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">02</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">03</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">03</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">04</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">04</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">05</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">05</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">06</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">06</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">07</span>
-                <span className="text-xs mt-1">32 min</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">07</span>
+    <span className="text-xs mt-1">32 min</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 bg-blue-500 text-white rounded-lg">
-                <span className="font-bold">08</span>
-                <span className="text-xs mt-1">12 min</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 bg-blue-500 text-white rounded-lg">
+    <span className="font-bold">08</span>
+    <span className="text-xs mt-1">12 min</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">09</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">09</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-red-500 text-red-500 rounded-lg">
-                <span className="font-bold">10</span>
-                <span className="text-xs mt-1">2 min</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-red-500 text-red-500 rounded-lg">
+    <span className="font-bold">10</span>
+    <span className="text-xs mt-1">2 min</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">11</span>
-              </Button>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">11</span>
+  </Button>
 
-              <Button className="flex flex-col items-center justify-center w-20 h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
-                <span className="font-bold">12</span>
-              </Button>
-            </div>
-          </div>
-        </div>
+  <Button className="flex flex-col items-center justify-center h-20 border-2 border-dashed border-blue-500 text-blue-500 rounded-lg">
+    <span className="font-bold">12</span>
+  </Button>
+</div>
+
+
+         
+  
 
         <div className="w-full">
           <h3>Mesa N&ordm; 10</h3>
