@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { api } from "../services/api";
 import io, { Socket } from "socket.io-client";
@@ -10,7 +12,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  company_id: string;
+  company_id: number;
 }
 
 interface AuthContextData {
