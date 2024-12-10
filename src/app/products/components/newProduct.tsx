@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+
 import {
   FileImage,
   Utensils,
@@ -11,17 +11,6 @@ import {
   ChefHat,
   CirclePlus,
 } from "lucide-react";
-
-import { createProduct } from "@/app/api/products/createProduct";
-import { fetchSubCategorys } from "@/app/api/subCategorys/fetchSubCategorys";
-
-import { Subcategory } from "@/types/Subcategory";
-
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
 
 import {
   Drawer,
@@ -43,20 +32,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import { fetchSubCategorys } from "@/app/api/subCategorys/fetchSubCategorys";
+import { createProduct } from "@/app/api/products/createProduct";
 import { fetchProducts } from "@/app/api/products/fetchProducts";
+import { Textarea } from "@/components/ui/textarea";
+import { Subcategory } from "@/types/Subcategory";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export function NewProduct() {
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [avatar, setAvatar] = useState<File | null>(null)
-  const [name, setName] = useState("");
-  const [value, setValue] = useState("");
-  const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState<Subcategory[]>([]);
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [subCategory, setSubCategory] = useState<Subcategory[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
-  const [user, setUser] = useState<any>(null);
-  const [stock, setStock] = useState("");
+  const [avatar, setAvatar] = useState<File | null>(null)
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [value, setValue] = useState("");
+  const [stock, setStock] = useState("");
+  const [user, setUser] = useState<any>(null);
+  const [name, setName] = useState("");
   const maxLength = 320;
   
 
@@ -106,6 +105,10 @@ export function NewProduct() {
 
   const handleSubmit = async () => {
     try {
+      if (!name || !description || !category || !value || !stock || !avatar || !selectedSubCategoryId) {
+        toast.error("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
       await createProduct(
         user.company_id, // Garante que o ID da empresa está presente
         name,                 // Nome do produto
