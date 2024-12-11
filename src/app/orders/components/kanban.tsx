@@ -40,45 +40,55 @@ export function Kanban() {
       const loadOrders = async () => {
         try {
           const fetchedOrders = await fetchOrders(user.company_id);
+          console.log("Pedidos recebidos:", fetchedOrders);
+      
+          if (!Array.isArray(fetchedOrders)) {
+            throw new Error("Formato inválido de dados retornado.");
+          }
+      
           const organizedOrders: OrdersState = {
             pendente: fetchedOrders
               .filter((order) => order.status === "pending")
               .map((order) => ({
                 id: String(order.id),
-                content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
+                content: `${order.client_name} - R$ ${Number(order.total_value).toFixed(2)}`, // Converte para número antes de toFixed
                 status: order.status,
                 client_name: order.client_name,
-                total_value: order.total_value,
+                total_value: Number(order.total_value), // Converte para número
                 table_number: order.table_number,
               })),
             preparando: fetchedOrders
               .filter((order) => order.status === "preparing")
               .map((order) => ({
                 id: String(order.id),
-                content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
+                content: `${order.client_name} - R$ ${Number(order.total_value).toFixed(2)}`, // Converte para número antes de toFixed
                 status: order.status,
                 client_name: order.client_name,
-                total_value: order.total_value,
+                total_value: Number(order.total_value), // Converte para número
                 table_number: order.table_number,
               })),
             enviado: fetchedOrders
               .filter((order) => order.status === "sent")
               .map((order) => ({
                 id: String(order.id),
-                content: `${order.client_name} - R$ ${order.total_value.toFixed(2)}`,
+                content: `${order.client_name} - R$ ${Number(order.total_value).toFixed(2)}`, // Converte para número antes de toFixed
                 status: order.status,
                 client_name: order.client_name,
-                total_value: order.total_value,
+                total_value: Number(order.total_value), // Converte para número
                 table_number: order.table_number,
               })),
           };
+      
           setOrders(organizedOrders);
-        } catch (err) {
+        } catch (error) {
+          console.error("Erro ao carregar pedidos no useEffect:", error);
           setError("Erro ao carregar os pedidos. Tente novamente mais tarde.");
         } finally {
           setLoading(false);
         }
       };
+      
+      
 
       loadOrders();
     }

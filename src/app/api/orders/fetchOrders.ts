@@ -1,6 +1,5 @@
 import { api } from "@/services/api";
 
-
 export interface Order {
   id: number;
   company_id: number;
