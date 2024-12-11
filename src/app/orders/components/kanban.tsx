@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 import { Clock, Loader, CheckCircle } from "lucide-react";
 import { fetchOrders } from "@/app/api/orders/fetchOrders"; 
 
@@ -26,12 +26,12 @@ export function Kanban() {
   });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [user, setUser] = useState<any>(null); // Use state to set user
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("@linkEats:user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser)); // Only set the user from localStorage after rendering on client
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
@@ -82,17 +82,29 @@ export function Kanban() {
 
       loadOrders();
     }
-  }, [user]); // This effect will run when `user` is set
+  }, [user]);
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source } = result;
 
     if (!destination) return;
 
-    if (destination.droppableId !== source.droppableId || destination.index !== source.index) {
-      const startColumn = [...orders[source.droppableId as keyof OrdersState]];
-      const finishColumn = [...orders[destination.droppableId as keyof OrdersState]];
+    if (destination.droppableId === source.droppableId && destination.index === source.index) {
+      return;
+    }
 
+    const startColumn = Array.from(orders[source.droppableId as keyof OrdersState]);
+    const finishColumn = Array.from(orders[destination.droppableId as keyof OrdersState]);
+
+    if (source.droppableId === destination.droppableId) {
+      const [movedOrder] = startColumn.splice(source.index, 1);
+      startColumn.splice(destination.index, 0, movedOrder);
+
+      setOrders((prevOrders) => ({
+        ...prevOrders,
+        [source.droppableId]: startColumn,
+      }));
+    } else {
       const [movedOrder] = startColumn.splice(source.index, 1);
       finishColumn.splice(destination.index, 0, movedOrder);
 
@@ -111,26 +123,26 @@ export function Kanban() {
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="w-full md:flex justify-between">
         {Object.keys(orders).map((status) => (
-          <Droppable
-            key={status}
-            droppableId={status}
-            isDropDisabled={false}
-            direction="vertical"
-            isCombineEnabled={true}
-            ignoreContainerClipping={true}
-          >
+          <Droppable key={status} droppableId={status}>
             {(provided) => (
               <div
                 ref={provided.innerRef}
+                {...provided.droppableProps}
                 className="p-4 rounded-lg m-2 border w-full"
                 style={{
                   backgroundColor:
                     status === "pendente"
-                      ? "#f8d7da"
+                      ? "var(--kanban-pendente-bg-light)"
                       : status === "preparando"
-                      ? "#fff3cd"
-                      : "#d4edda",
-                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                      ? "var(--kanban-preparando-bg-light)"
+                      : "var(--kanban-enviado-bg-light)",
+                  borderColor:
+                    status === "pendente"
+                      ? "var(--kanban-pendente-border-light)"
+                      : status === "preparando"
+                      ? "var(--kanban-preparando-border-light)"
+                      : "var(--kanban-enviado-border-light)",
+                  boxShadow: "var(--kanban-box-shadow-light)",
                 }}
               >
                 <div className="flex items-center mb-4">
@@ -150,7 +162,7 @@ export function Kanban() {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className="p-4 mb-4 rounded-lg shadow-md bg-white border border-gray-200 hover:bg-gray-50 transition-colors"
+                        className="p-4 mb-4 rounded-lg shadow-md bg-white border border-gray-200 hover:bg-gray-50 hover:cursor-pointer transition-colors"
                       >
                         <div className="flex justify-between mb-2">
                           <span className="font-medium">{order.content}</span>

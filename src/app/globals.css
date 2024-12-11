@@ -44,6 +44,16 @@ body {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --kanban-pendente-bg-light: #f8d7da;
+    --kanban-preparando-bg-light: #fff3cd;
+    --kanban-enviado-bg-light: #d4edda;
+  
+    --kanban-pendente-border-light: #f5c6cb;
+    --kanban-preparando-border-light: #ffeeba;
+    --kanban-enviado-border-light: #c3e6cb;
+  
+    --kanban-box-shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .dark {
@@ -79,6 +89,16 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --kanban-pendente-bg-light: #572a29; /* Dark red */
+    --kanban-preparando-bg-light: #8e5b28; /* Dark yellow */
+    --kanban-enviado-bg-light: #4e9f56; /* Dark green */
+  
+    --kanban-pendente-border-light: #743b37;
+    --kanban-preparando-border-light: #b69c4d;
+    --kanban-enviado-border-light: #5b7e49;
+  
+    --kanban-box-shadow-light: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
 }
 
