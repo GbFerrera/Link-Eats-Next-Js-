@@ -1,43 +1,33 @@
 "use client";
 
 import * as React from "react";
-import { addDays, format } from "date-fns";
-import { Calendar as CalendarIcon, Drill, Receipt, Store } from "lucide-react";
-import { DateRange } from "react-day-picker";
-import { MdOutlineTableBar } from "react-icons/md";
-
-import { ToastDemo } from "./components/cart";
-
-import { cn } from "@/lib/utils";
+import { SelectComponent } from "@/components/selectComponent";
+import { DrawerComponent } from "@/components/drawerComponent";
 import { InputWithLabel } from "@/components/inputWithLabel";
+import { MdOutlineSportsMotorsports } from "react-icons/md";
 import { DataTableComponent } from "@/components/dataTable";
-
-import { Title } from "@/components/title";
-
+import { Calendar } from "@/components/ui/calendar";
+import { MdOutlineTableBar } from "react-icons/md";
+import { Button } from "@/components/ui/button";
+import { SheetDemo } from "./components/test";
+import { ToastDemo } from "./components/cart";
+import { DateRange } from "react-day-picker";
 import { Kanban } from "./components/kanban";
+import { Title } from "@/components/title";
+import { addDays, format } from "date-fns";
+import { cn } from "@/lib/utils";
+
+
 import {
-  Clock,
-  Loader,
-  CheckCircle,
-  CirclePlus,
+  Calendar as CalendarIcon, 
+  Drill, 
+  Receipt, 
+  Store,
   ListFilter,
   ClipboardList,
 } from "lucide-react";
 
-import {
-  FileImage,
-  Utensils,
-  CakeSlice,
-  CupSoda,
-  Soup,
-  ChefHat,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { MdOutlineSportsMotorsports } from "react-icons/md";
 
-import { DrawerComponent } from "@/components/drawerComponent";
-
-import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
@@ -51,8 +41,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { SelectComponent } from "@/components/selectComponent";
-import { SheetDemo } from "./components/test";
+
 
 export default function OrdersPage() {
   const [date, setDate] = React.useState<DateRange | undefined>({

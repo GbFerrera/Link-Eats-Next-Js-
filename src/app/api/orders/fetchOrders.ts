@@ -15,12 +15,23 @@ export interface Order {
   payment: number;
   command_id: number;
   table_number: number;
+  productsInOrder: {
+    productId: number;
+    productName: string;
+    avatarId: string;
+    amount: number;
+    price: string;
+  }[];
 }
 
 export const fetchOrders = async (companyId: number): Promise<Order[]> => {
   try {
     const response = await api.get(`/orders/show/${companyId}`);
-    return response.data; 
+    const orders: Order[] = response.data.map((order: any) => ({
+      ...order,
+      productsInOrder: order.productsInOrder || [], // Garantir que sempre seja um array
+    }));
+    return orders;
   } catch (error) {
     console.error("Erro ao buscar pedidos:", error);
     throw new Error("Erro ao buscar pedidos. Tente novamente mais tarde.");
