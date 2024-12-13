@@ -394,7 +394,7 @@ export function AppSidebar({ children }: AppSidebarProps) {
                   defaultOpen={item.isActive}
                   className="group/collapsible"
                 >
-                  <SidebarMenuItem>
+                  <SidebarMenuItem className="cursor-pointer">
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton className="text-sm rounded-xl p-3 border border-gray-30 hover:shadow-lg hover:translate-x-1 transition duration-300" tooltip={item.title}>
                       <a href={item.url}>

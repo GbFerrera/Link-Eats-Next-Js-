@@ -14,6 +14,8 @@ import { AuthProvider } from "@/hooks/auth";
 
 import { Toaster } from "@/components/ui/sonner"
 
+import { Toaster as ToasterCart } from "@/components/ui/toaster"
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -55,7 +57,7 @@ export default function RootLayout({
             children
           ) : (
             <>
-              <AppSidebar>{children}</AppSidebar>
+              <AppSidebar><ToasterCart/>{children}</AppSidebar>
               <CommandDialogDemo />
             </>
           )}

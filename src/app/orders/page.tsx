@@ -2,16 +2,40 @@
 
 import * as React from "react";
 import { addDays, format } from "date-fns";
-import { Calendar as CalendarIcon, Receipt } from "lucide-react";
+import { Calendar as CalendarIcon, Drill, Receipt, Store } from "lucide-react";
 import { DateRange } from "react-day-picker";
+import { MdOutlineTableBar } from "react-icons/md";
+
+import { ToastDemo } from "./components/cart";
 
 import { cn } from "@/lib/utils";
+import { InputWithLabel } from "@/components/inputWithLabel";
+import { DataTableComponent } from "@/components/dataTable";
 
-import { Title } from "@/components/title"
+import { Title } from "@/components/title";
 
-import {Kanban} from "./components/kanban"
-import { Clock, Loader, CheckCircle,CirclePlus } from 'lucide-react'; 
+import { Kanban } from "./components/kanban";
+import {
+  Clock,
+  Loader,
+  CheckCircle,
+  CirclePlus,
+  ListFilter,
+  ClipboardList,
+} from "lucide-react";
+
+import {
+  FileImage,
+  Utensils,
+  CakeSlice,
+  CupSoda,
+  Soup,
+  ChefHat,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MdOutlineSportsMotorsports } from "react-icons/md";
+
+import { DrawerComponent } from "@/components/drawerComponent";
 
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -20,33 +44,28 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-export default function OrdersPage(){
+import { SelectComponent } from "@/components/selectComponent";
+import { SheetDemo } from "./components/test";
 
+export default function OrdersPage() {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(2024, 0, 20),
     to: addDays(new Date(2024, 0, 20), 20),
   });
 
-return(
-
-<div>
-
-
-<div className="flex flex-col lg:justify-between lg:flex-row mb-10">
-
-  <div>
-        <Title>Pedidos</Title>
-        <p className="">Visão geral dos pedidos</p>
+  return (
+    <div>
+      <div className="flex align-center flex-col lg:justify-between lg:flex-row mb-10">
+        <div>
+          <Title>Pedidos</Title>
+          <p className="">Visão geral dos pedidos</p>
         </div>
         <Popover>
           <PopoverTrigger className="rounded-xl" asChild>
@@ -86,41 +105,110 @@ return(
         </Popover>
       </div>
 
-      <Sheet>
-  <SheetTrigger className="mb-5">
+      <p className="flex gap-3 text-lg font-bold mb-2">
+        <ListFilter size={20} />
+        Filtros
+      </p>
 
-    <Button>
-      Criar novo pedido
-      <CirclePlus/>
-      </Button>
-  </SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>Detalhes do novo pedido</SheetTitle>
-      <SheetDescription>
-        
-      </SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
+      <div className="flex flex-col gap-3 items-center mb-4 md:items-start md:flex-row justify-between">
+        <div className="flex gap-2">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button className="hover:cursor-pointer" variant="outline">
+                  Todos
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Delivery / Balção / Mesas</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline">
+                  <Store /> / <MdOutlineTableBar />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Balção / Mesas</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline">
+                  <MdOutlineSportsMotorsports />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Delivery</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
 
+        <DrawerComponent
+          buttonTitle="Novo Pedido"
+          drawerTitle={
+            <>
+              <ClipboardList />
+              Novo pedido
+            </>
+          }
+          drawerDescription="Detalhes do novo pedido"
+          footerActionsTitle="Criar Pedido"
+        >
+          <section className="flex gap-4 mb-3">
+            <InputWithLabel
+              label="Cliente"
+              id="nome"
+              placeholder="Digite o nome do cliente"
+              type="text"
+            />
+            <SelectComponent
+              label="Entrega"
+              labelGroup="Tipos de entrega"
+              triggerWidth="full"
+              placeholder="Selecione o tipo"
+              options={[
+                {
+                  value: "delivery",
+                  label: "Delivery",
+                  icon: <MdOutlineSportsMotorsports size={16} />,
+                },
+                { value: "store", label: "Balção", icon: <Store size={16} /> },
+                {
+                  value: "table",
+                  label: "Mesa",
+                  icon: <MdOutlineTableBar size={16} />,
+                },
+              ]}
+            />
+          </section>
 
+          <InputWithLabel
+            label="Telefone para contato"
+            id="nome"
+            placeholder="(62) 9 1234-8765"
+            type="phone"
+          />
 
+          <section className="mt-3">
 
+            <p className="font-semibold mb-3">Montagem do pedido</p>
+            
+            <DataTableComponent/>
 
-<Kanban/>
-
-
-</div>
-
-
-
-)
-
-
-
-
-
+            <SheetDemo></SheetDemo>
+          </section>
+        </DrawerComponent>
+      </div>
+      <Kanban />
+    </div>
+  );
 }
